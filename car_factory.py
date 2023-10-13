@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from car import Car
 from battery.nubbin_battery import NubbinBattery
 from battery.spindler_battery import SpindlerBattery
@@ -22,20 +22,20 @@ class SingletonMeta(type):
 
 
 class CarFactory(metaclass=SingletonMeta):
-    def create_calliope(self, current_date: datetime, last_service_date: datetime, current_mileage: int, last_service_mileage: int) -> Car:
+    def create_calliope(self, current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
         return Car(CapuletEngine(last_service_mileage,current_mileage), SpindlerBattery(last_service_date))
 
-    def create_glissade(self, current_date: datetime, last_service_date: datetime, current_mileage: int,
+    def create_glissade(self, current_date: date, last_service_date: date, current_mileage: int,
                         last_service_mileage: int) -> Car:
         return Car(WilloughbyEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date))
 
-    def create_palindrome(self, current_date: datetime, last_service_date: datetime, warning_light_on: bool) -> Car:
+    def create_palindrome(self, current_date: date, last_service_date: date, warning_light_on: bool) -> Car:
         return Car(SternmanEngine(warning_light_on), SpindlerBattery(last_service_date))
 
-    def create_rorschach(self, current_date: datetime, last_service_date: datetime, current_mileage: int,
+    def create_rorschach(self, current_date: date, last_service_date: date, current_mileage: int,
                         last_service_mileage: int) -> Car:
         return Car(WilloughbyEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date))
 
-    def create_thovex(self, current_date: datetime, last_service_date: datetime, current_mileage: int,
+    def create_thovex(self, current_date: date, last_service_date: date, current_mileage: int,
                          last_service_mileage: int) -> Car:
         return Car(CapuletEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date))
