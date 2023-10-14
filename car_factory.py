@@ -5,6 +5,7 @@ from battery.spindler_battery import SpindlerBattery
 from engine.capulet_engine import CapuletEngine
 from engine.sternman_engine import SternmanEngine
 from engine.willoughby_engine import WilloughbyEngine
+from tire.tire import Carrigan, Octoprime
 
 
 class SingletonMeta(type):
@@ -23,19 +24,19 @@ class SingletonMeta(type):
 
 class CarFactory(metaclass=SingletonMeta):
     def create_calliope(self, current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
-        return Car(CapuletEngine(last_service_mileage,current_mileage), SpindlerBattery(last_service_date))
+        return Car(CapuletEngine(last_service_mileage,current_mileage), SpindlerBattery(last_service_date),Carrigan([0,0,0,0]))
 
     def create_glissade(self, current_date: date, last_service_date: date, current_mileage: int,
                         last_service_mileage: int) -> Car:
-        return Car(WilloughbyEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date))
+        return Car(WilloughbyEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date),Carrigan([0,0,0,0]))
 
     def create_palindrome(self, current_date: date, last_service_date: date, warning_light_on: bool) -> Car:
-        return Car(SternmanEngine(warning_light_on), SpindlerBattery(last_service_date))
+        return Car(SternmanEngine(warning_light_on), SpindlerBattery(last_service_date), Carrigan([0,0,0,0]))
 
     def create_rorschach(self, current_date: date, last_service_date: date, current_mileage: int,
                         last_service_mileage: int) -> Car:
-        return Car(WilloughbyEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date))
+        return Car(WilloughbyEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date), Octoprime([0,0,0,0]))
 
     def create_thovex(self, current_date: date, last_service_date: date, current_mileage: int,
                          last_service_mileage: int) -> Car:
-        return Car(CapuletEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date))
+        return Car(CapuletEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date), Octoprime([0,0,0,0]))

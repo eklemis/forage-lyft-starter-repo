@@ -8,4 +8,4 @@ class SpindlerBattery(Battery):
         self.current_date = datetime.today().date()
 
     def needs_service(self) -> bool:
-        return (self.current_date - self.last_service_date).days >= (2 * 360)
+        return (self.current_date - self.last_service_date).days >= (3 * 360)
